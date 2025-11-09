@@ -14,11 +14,14 @@ ws.onmessage = (event) => {
     console.log("Connected to the server");
     document.getElementById("status").textContent = "Waiting...";
   } else if (state === "connected" && message.action === "start") {
-    state = "inGame";
+    state = "started";
     console.log("Game started");
     document.getElementsByClassName("lobby")[0].classList.add("hidden");
     document.getElementsByClassName("game-ui")[0].classList.remove("hidden");
     document.getElementById("status").textContent = "Game Started!";
+  } else if (state === "started" && message.action === "gameState") {
+    console.log("Game state updated:", message.data);
+    // Update the game UI based on the new game state
   }
 };
 ws.onclose = () => {

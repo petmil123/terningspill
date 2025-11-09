@@ -50,6 +50,10 @@ height: 100%;
 aspect-ratio: 1 / 1;
 }
 
+.field.disabled {
+    background-color: gray;
+}
+
 .buttons {
     display: flex;
     flex-direction: column;
@@ -71,6 +75,10 @@ button {
     justify-content: center;
     align-items: center;
     font-size: 48px;
+}
+
+.clickable {
+    cursor: pointer;    
 }
 
 /*This depends on the cascade to remove flexed elements*/

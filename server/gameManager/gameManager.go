@@ -25,6 +25,8 @@ type gameState struct {
 	player2Covered [6]int
 	turn           int // 1 or 2
 	turnPhase      turnPhase
+	chosenField    int // 1 to 6
+	diceRoll       int // 1 to 6
 }
 
 func (gs *gameState) toString(playerNum int) string {
@@ -32,12 +34,12 @@ func (gs *gameState) toString(playerNum int) string {
 		panic("Invalid player number")
 	}
 	if playerNum == 1 {
-		return fmt.Sprintf("%v,%v,%t,%s",
-			gs.player1Covered, gs.player2Covered, gs.turn == 1, gs.turnPhase)
+		return fmt.Sprintf("%v,%v,%t,%s,%d,%d",
+			gs.player1Covered, gs.player2Covered, gs.turn == 1, gs.turnPhase, gs.chosenField, gs.diceRoll)
 	}
 	if playerNum == 2 {
-		return fmt.Sprintf("%v,%v,%t,%s",
-			gs.player2Covered, gs.player1Covered, gs.turn == 2, gs.turnPhase)
+		return fmt.Sprintf("%v,%v,%t,%s,%d,%d",
+			gs.player2Covered, gs.player1Covered, gs.turn == 2, gs.turnPhase, gs.chosenField, gs.diceRoll)
 	}
 	return ""
 }

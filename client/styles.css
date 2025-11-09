@@ -80,6 +80,10 @@ button {
 .clickable {
     cursor: pointer;    
 }
+.field.covered {
+    background-color: black;
+    color: white;
+}
 
 /*This depends on the cascade to remove flexed elements*/
 .hidden {

@@ -13,7 +13,7 @@ type ConnectionRequest struct {
 	AcceptCh chan bool
 }
 
-func GameManager(connectRequestChan chan ConnectionRequest) {
+func GameInitiator(connectRequestChan chan ConnectionRequest) {
 	players := make([]*gameManager.Player, 0, 2)
 	for range connectRequestChan {
 		req := <-connectRequestChan
@@ -31,7 +31,7 @@ func GameManager(connectRequestChan chan ConnectionRequest) {
 			fmt.Println("Accepted connection for player:", req.Player.ConnectionID)
 			req.Player.SendChan <- socketHandler.PlayerMessage{
 				ConnectionID: req.Player.ConnectionID,
-				Message:      socketHandler.Message{Action: "connected", Data: "Welcome Player"},
+				Message:      socketHandler.Message{Action: "connected", Data: "Welcome. You will be paired soon."},
 			}
 			req.AcceptCh <- true
 			if len(players) == 2 {

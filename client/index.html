@@ -4,10 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terningbløff</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Velkommen til Terningbløff!</h1>
-    <div id="status"></div>
+    <div class="lobby">
+        <h1>Velkommen til Terningbløff!</h1>
+        <div id="status"></div>
+    </div>
+
+    <div class="game-ui">
+        <div class="controlRow">
+            <div class="dice">
+                <img src="dices/3.png" alt="Dice showing 3" />
+            </div>
+            <div class="board">
+                <div class="field">1</div>
+                <div class="field">2</div>
+                <div class="field">3</div>
+                <div class="field">4</div>
+                <div class="field">5</div>
+                <div class="field">6</div>
+                <div class="field">1</div>
+                <div class="field">2</div>
+                <div class="field">3</div>
+                <div class="field">4</div>
+                <div class="field">5</div>
+                <div class="field">6</div>
+            </div>
+            <div class="callField">
+                <p id="opponentCall"></p>
+            </div>
+        </div>
+
+        <div class="controlRow">
+            <div class="dice">
+                <img src="dices/3.png" alt="Dice showing 3" />
+            </div>
+            <div class="board">
+                <div class="field">1</div>
+                <div class="field">2</div>
+                <div class="field">3</div>
+                <div class="field">4</div>
+                <div class="field">5</div>
+                <div class="field">6</div>
+                <div class="field">1</div>
+                <div class="field">2</div>
+                <div class="field">3</div>
+                <div class="field">4</div>
+                <div class="field">5</div>
+                <div class="field">6</div>
+            </div>
+            <div class="buttons">
+                <button type="button">Bløff</button>
+                <button type="button">Sant</button>
+            </div>
+        </div>
+
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

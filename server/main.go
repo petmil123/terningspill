@@ -21,7 +21,7 @@ var upgrader = websocket.Upgrader{
 func main() {
 	// This runs the function handleRequest when called.
 	connectRequestChan := make(chan gameInitiator.ConnectionRequest, 4)
-	go gameInitiator.GameManager(connectRequestChan)
+	go gameInitiator.GameInitiator(connectRequestChan)
 
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		//receive a connect request

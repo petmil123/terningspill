@@ -1,17 +1,24 @@
 const ws = new WebSocket("ws://localhost:8080/ws");
 
-const testMessage = {
-  action: "test",
-  data: "This is a test message"
-}
+let state = "toConnect";
 
 ws.onopen = () => {
   console.log("WebSocket connection established");
-  ws.send(JSON.stringify(testMessage));
 };
 
 ws.onmessage = (event) => {
-  console.log("Message from server:", event.data);
+  const message = JSON.parse(event.data);
+  console.log("Message received:", message)
+  if (state === "toConnect" && message.action === "connected") {
+    state = "connected";
+    console.log("Connected to the server");
+    document.getElementById("status").textContent = "Waiting...";
+  } else if (state === "connected" && message.action === "start") {
+    state = "inGame";
+    console.log("Game started");
+    document.getElementById("status").textContent = "Game Started!";
+    // Initialize game UI here
+  }
 };
 ws.onclose = () => {
     console.log("WebSocket connection closed");

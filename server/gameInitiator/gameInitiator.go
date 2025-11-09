@@ -15,11 +15,10 @@ type ConnectionRequest struct {
 
 func GameInitiator(connectRequestChan chan ConnectionRequest) {
 	players := make([]*gameManager.Player, 0, 2)
-	for range connectRequestChan {
-		req := <-connectRequestChan
+	for req := range connectRequestChan {
+		fmt.Println("New connection request for player:", req.Player.ConnectionID)
 		if len(players) >= 2 {
 			// Reject connection
-			fmt.Println("Rejected")
 			req.Player.SendChan <- socketHandler.PlayerMessage{
 				ConnectionID: req.Player.ConnectionID,
 				Message:      socketHandler.Message{Action: "error", Data: "Maximum players reached"},
@@ -28,12 +27,11 @@ func GameInitiator(connectRequestChan chan ConnectionRequest) {
 		} else {
 			players = append(players, &req.Player)
 			// Acknowledge connection
-			fmt.Println("Accepted connection for player:", req.Player.ConnectionID)
+			req.AcceptCh <- true
 			req.Player.SendChan <- socketHandler.PlayerMessage{
 				ConnectionID: req.Player.ConnectionID,
 				Message:      socketHandler.Message{Action: "connected", Data: "Welcome. You will be paired soon."},
 			}
-			req.AcceptCh <- true
 			if len(players) == 2 {
 				fmt.Println("Two players connected. Starting game...")
 				go gameManager.RunGame(players[0], players[1])

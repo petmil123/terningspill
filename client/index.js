@@ -124,10 +124,16 @@ function coverBoard(ownCoveredFields, oppCoveredFields) {
     }
   }
   for (let i = 0; i < 6 ; i++) {
-    if(oppCoveredFields[i] >= 1) {
-      document.getElementById(`oppField_1_${i+1}`).classList.add("covered");
+    if(oppCoveredFields[i] === 0) {
+      document.getElementById(`oppField_1_${i+1}`).classList.remove("covered");
+      document.getElementById(`oppField_2_${i+1}`).classList.remove("covered");
     }
-    if(oppCoveredFields[i] >= 2) {
+    if(oppCoveredFields[i] === 1) {
+      document.getElementById(`oppField_1_${i+1}`).classList.add("covered");
+      document.getElementById(`oppField_2_${i+1}`).classList.remove("covered");
+    }
+    if(oppCoveredFields[i] === 2) {
+      document.getElementById(`oppField_1_${i+1}`).classList.add("covered");
       document.getElementById(`oppField_2_${i+1}`).classList.add("covered");
     }
   }

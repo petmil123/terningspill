@@ -134,6 +134,7 @@ func RunGame(player1 *Player, player2 *Player) {
 					// Process guess
 					if msg.Message.Data == "truth" {
 						gameState.turnPhase = toThrow
+						continue
 					}
 					isBluff := gameState.diceRoll != gameState.chosenField
 					if isBluff {
@@ -210,6 +211,7 @@ func RunGame(player1 *Player, player2 *Player) {
 					// Process guess
 					if msg.Message.Data == "truth" {
 						gameState.turnPhase = toThrow
+						continue
 					}
 					isBluff := gameState.diceRoll != gameState.chosenField
 					if isBluff {

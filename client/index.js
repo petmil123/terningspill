@@ -16,8 +16,9 @@ ws.onmessage = (event) => {
   } else if (state === "connected" && message.action === "start") {
     state = "inGame";
     console.log("Game started");
+    document.getElementsByClassName("lobby")[0].classList.add("hidden");
+    document.getElementsByClassName("game-ui")[0].classList.remove("hidden");
     document.getElementById("status").textContent = "Game Started!";
-    // Initialize game UI here
   }
 };
 ws.onclose = () => {

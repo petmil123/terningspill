@@ -2,9 +2,7 @@
     box-sizing: border-box;
 }
 
-.lobby {
-    display: none;
-}
+
 .game-ui {
     display: flex;
     flex-direction: column;
@@ -73,4 +71,9 @@ button {
     justify-content: center;
     align-items: center;
     font-size: 48px;
+}
+
+/*This depends on the cascade to remove flexed elements*/
+.hidden {
+    display: none;
 }
